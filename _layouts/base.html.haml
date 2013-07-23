@@ -16,7 +16,8 @@
     %ul.title-area
       %li.name
         %h1
-          %a(href="#{site.base_url}/")=site.name
+          %a(href="#{site.ctx_path}/")
+            =Asciidoctor.render(site.name, :doctype => :inline)
       %li.toggle-topbar.menu-icon
         %a{:href=>'#'}<
           %span
@@ -25,12 +26,15 @@
         %li.divider
           %li
             %a{:href=>"#{site.base_url}/"} Home
+            %li.divider
+              %li
+                %a(href="#{site.ctx_path}/about.html") About
         -#%li.divider
         -#  %li
         -#    %a{:href=>"#{site.base_url}/blog"} Blog
-  .row
+  #content.row
     .large-12.columns
-      ~ content
+      =content
   %footer.row(style='max-width: 100%')
     %hr
     .large-6.columns
